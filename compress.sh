@@ -29,6 +29,11 @@ function mergeFileContent()
 	java -jar yuicompressor.jar --type $1 --charset utf-8 -o $3$4 $tempFile
 	#删除临时合并的js文件
 	rm -if $tempFile
+	#修正 yuicompressor 对于 @media 响应式样式的压缩错误
+	if [ "$1" == "css" ] ;
+	then
+		 sed -i "s/and(/and (/g" $3$4
+	fi
 	#输出提示
 	echo "The success of $1 compression!"
 }
@@ -43,7 +48,7 @@ then
 	#配置要生成的js 文件的文件名
 	outputJsName=a-ou_min.js
 	#配置要合并的js文件 空格分割
-	jsData=(a-ou_bak.js jquery.color.js jquery.cookie.js jquery.easing.js jquery.fancybox-1.3.4.min.js jquery.lazyload.js jquery.mousewheel.min.js)
+	jsData=(ajaxupload.js a-ou.js jquery.color.js jquery.cookie.js jquery.easing.js jquery.fancybox-1.3.4.min.js jquery.lazyload.js jquery.mousewheel.js waterfall.js handlebars.js)
 	
 	mergeFileContent $1 $inputPath $outputPath $outputJsName "${jsData[*]}"
 
@@ -57,7 +62,7 @@ then
 	#配置要生成的css 文件的文件名
 	outputCssName=a-ou_min.css
 	#配置要合并的css文件 空格分割
-	cssData=(a-ou_bak.css)
+	cssData=(a-ou.css)
 	
 	mergeFileContent $1 $inputPath $outputPath $outputCssName "${cssData[*]}"
 
