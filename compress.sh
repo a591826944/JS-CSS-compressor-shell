@@ -32,7 +32,8 @@ function mergeFileContent()
 	#修正 yuicompressor 对于 @media 响应式样式的压缩错误
 	if [ "$1" == "css" ] ;
 	then
-		 sed -i "s/and(/and (/g" $3$4
+		 sed -i.bak "s/and(/and (/g" $3$4
+		 rm -f $3$4".bak"
 	fi
 	#输出提示
 	echo "The success of $1 compression!"
@@ -42,9 +43,9 @@ if [ "$1" == "js" ] ;
 then
 
 	#配置要合并的js文件所在的目录
-	inputPath=/var/www/a_o/themes/a-ou_2013/scripts/
+	inputPath=/Users/wwpeng/site/a-ou/themes/a-ou_2013/scripts
 	#配置生成的js 要输出的目录
-	outputPath=/var/www/a_o/themes/a-ou_2013/scripts/
+	outputPath=/Users/wwpeng/site/a-ou/themes/a-ou_2013/scripts
 	#配置要生成的js 文件的文件名
 	outputJsName=a-ou_min.js
 	#配置要合并的js文件 空格分割
@@ -56,9 +57,9 @@ elif [ "$1" == "css" ] ;
 then
 
 	#配置要合并的css文件所在的目录
-	inputPath=/var/www/a_o/themes/a-ou_2013/css/
+	inputPath="/Users/wwpeng/site/a-ou/themes/a-ou_2013/css/"
 	#配置生成的css 要输出的目录
-	outputPath=/var/www/a_o/themes/a-ou_2013/css/
+	outputPath="/Users/wwpeng/site/a-ou/themes/a-ou_2013/css/"
 	#配置要生成的css 文件的文件名
 	outputCssName=a-ou_min.css
 	#配置要合并的css文件 空格分割
