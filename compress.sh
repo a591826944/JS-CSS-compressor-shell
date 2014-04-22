@@ -43,9 +43,9 @@ if [ "$1" == "js" ] ;
 then
 
 	#配置要合并的js文件所在的目录
-	inputPath=/Users/wwpeng/site/a-ou/themes/a-ou_2013/scripts
+	inputPath="/Users/wwpeng/site/a-ou/themes/a-ou_2013/scripts"
 	#配置生成的js 要输出的目录
-	outputPath=/Users/wwpeng/site/a-ou/themes/a-ou_2013/scripts
+	outputPath="/Users/wwpeng/site/a-ou/themes/a-ou_2013/scripts"
 	#配置要生成的js 文件的文件名
 	outputJsName=a-ou_min.js
 	#配置要合并的js文件 空格分割
